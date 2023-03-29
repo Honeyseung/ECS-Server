@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<message xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="https://uangel.com"
+	xsi:schemaLocation="https://uangel.com message.xsd">
+	
+	<code>1</code>	
+	<data>		
+		<int name="hello"/>
+	</data>
+			
+</message>

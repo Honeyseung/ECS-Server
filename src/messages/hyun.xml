@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<message>
+    <identifier>1</identifier>
+    <quantity>20</quantity>
+    <data>
+        <float name="a"/>
+        <byte>
+            <boolean mem="1" name="1"/>
+        </byte>
+    </data>
+</message>
