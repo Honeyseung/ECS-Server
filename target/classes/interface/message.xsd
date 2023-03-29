@@ -1,0 +1,379 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="https://uangel.com"
+           xmlns="https://uangel.com"
+           elementFormDefault="qualified">
+
+    <xs:complexType name="type">
+    	<xs:complexContent>
+            <xs:extension base="range">
+                <xs:attribute name="name" type="xs:string"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="byte">
+        <xs:complexContent>
+            <xs:extension base="type"/>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:complexType name="unsignedByte">
+        <xs:complexContent>
+            <xs:extension base="type"/>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="char">
+        <xs:complexContent>
+            <xs:extension base="type"/>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:complexType name="chars">
+        <xs:complexContent>
+            <xs:extension base="type">
+                <xs:attribute name="length" type="xs:integer" use="required"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="bytes">
+        <xs:complexContent>
+            <xs:extension base="type">
+                <xs:attribute name="length" type="xs:integer" use="required"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="short">
+        <xs:complexContent>
+            <xs:extension base="type"/>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="unsignedShort">
+        <xs:complexContent>
+            <xs:extension base="type"/>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="shortLE">
+        <xs:complexContent>
+            <xs:extension base="type"/>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="unsignedShortLE">
+        <xs:complexContent>
+            <xs:extension base="type"/>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="int">
+        <xs:complexContent>
+            <xs:extension base="type"/>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="unsignedInt">
+        <xs:complexContent>
+            <xs:extension base="type"/>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="intLE">
+        <xs:complexContent>
+            <xs:extension base="type"/>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="unsignedIntLE">
+        <xs:complexContent>
+            <xs:extension base="type"/>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="float">
+        <xs:complexContent>
+            <xs:extension base="type"/>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="floatLE">
+        <xs:complexContent>
+            <xs:extension base="type"/>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="long">
+        <xs:complexContent>
+            <xs:extension base="type"/>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="longLE">
+        <xs:complexContent>
+            <xs:extension base="type"/>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:complexType name="unsignedLong">
+        <xs:complexContent>
+            <xs:extension base="type"/>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:complexType name="unsignedLongLE">
+        <xs:complexContent>
+            <xs:extension base="type"/>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="double">
+        <xs:complexContent>
+            <xs:extension base="type"/>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="doubleLE">
+        <xs:complexContent>
+            <xs:extension base="type"/>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:complexType name="customBytes">
+    	<xs:complexContent>
+	    	<xs:extension base="type">
+	    		<xs:sequence>
+					<xs:element name="bit" type="bit" minOccurs="0" maxOccurs="unbounded" />
+					<xs:element name="postOperation" type="postOperation" minOccurs="0" maxOccurs="unbounded" />
+    				<xs:element name="calculations" type="calculations" minOccurs="0" maxOccurs="unbounded"/> 
+	    		</xs:sequence>
+	    		<xs:attribute name="length" type="xs:integer"/>
+	    		<xs:attribute name="convertVarType" type="xs:string"/>
+	    		<xs:attribute name="readVarType" type="xs:string"/>
+	    		<xs:attribute name="endian" type="xs:string"/>
+	    		<xs:attribute name="complementOf2" type="xs:boolean"/>
+	    		<xs:attribute name="format" type="xs:string"/>
+	    		<xs:attribute name="use" type="xs:boolean"/>
+			</xs:extension>
+   		</xs:complexContent>
+    </xs:complexType>
+    
+    <xs:complexType name="unusedBytes">
+        <xs:complexContent>
+            <xs:extension base="type">
+                <xs:attribute name="length" type="xs:integer" use="required"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:complexType name="hex">
+        <xs:complexContent>
+            <xs:extension base="type">
+                <xs:attribute name="length" type="xs:integer" use="required"/>
+	    		<xs:attribute name="endian" type="xs:string"/>
+	    		<xs:attribute name="format" type="xs:string"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:complexType name="octal">
+        <xs:complexContent>
+            <xs:extension base="type">
+                <xs:attribute name="length" type="xs:integer" use="required"/>
+	    		<xs:attribute name="endian" type="xs:string"/>
+	    		<xs:attribute name="format" type="xs:string"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+	<xs:complexType name="bit"> 
+     	<xs:complexContent>
+            <xs:extension base="range">
+                <xs:sequence>
+					<xs:element name="calculations" type="calculations" minOccurs="0" maxOccurs="unbounded"/> 
+				</xs:sequence>
+		     	<xs:attribute name="name" type="xs:string" use="required"/>
+		     	<xs:attribute name="begin" type="xs:integer" use="required"/>
+		     	<xs:attribute name="end" type="xs:integer" use="required"/>
+		     	<xs:attribute name="use" type="xs:boolean"/>
+		     	<xs:attribute name="convertVarType" type="xs:string" use="required"/>
+		     	<xs:attribute name="readVarType" type="xs:string" use="required"/>
+		     	<xs:attribute name="complementOf2" type="xs:boolean"/>
+		     	<xs:attribute name="format" type="xs:string"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:complexType name="variable"> 
+        <xs:complexContent>
+	    	<xs:extension base="type">
+	    		<xs:sequence>
+					<xs:element name="calculations" type="calculations" minOccurs="0" maxOccurs="unbounded"/> 
+				</xs:sequence>
+		     	<xs:attribute name="use" type="xs:boolean"/>
+		     	<xs:attribute name="selectName" type="xs:string"/>
+		     	<xs:attribute name="value" type="xs:double"/>
+			</xs:extension>
+   		</xs:complexContent>
+    </xs:complexType>
+    
+    <xs:complexType name="postOperation"> 
+    	<xs:complexContent>
+            <xs:extension base="range">
+                <xs:sequence>
+					<xs:element name="calculations" type="calculations" minOccurs="0" maxOccurs="unbounded"/> 
+				</xs:sequence>
+		     	<xs:attribute name="name" type="xs:string" use="required"/>
+		     	<xs:attribute name="left" type="xs:string" use="required"/>
+		     	<xs:attribute name="right" type="xs:string" use="required"/>
+		     	<xs:attribute name="calc" type="xs:string" use="required"/>
+		     	<xs:attribute name="use" type="xs:boolean"/>
+		     	<xs:attribute name="convertVarType" type="xs:string" use="required"/>
+		     	<xs:attribute name="format" type="xs:string"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:complexType name="calculations">
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="add" type="add"/>
+            <xs:element name="subtract" type="subtract"/>
+            <xs:element name="multiply" type="multiply"/>
+            <xs:element name="divide" type="divide"/>
+            <xs:element name="round" type="round"/>
+            <xs:element name="floor" type="floor"/>
+            <xs:element name="indices" type="indices"/>
+        </xs:choice>
+    </xs:complexType>
+    
+    <xs:complexType name="range">
+        <xs:attribute name="startRange" type="xs:double"/>
+        <xs:attribute name="endRange" type="xs:double"/>
+        <xs:attribute name="fixedRange" type="xs:string"/>
+    </xs:complexType>
+    
+    <xs:complexType name="add">
+        <xs:attribute name="value" type="xs:float" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="subtract">
+        <xs:attribute name="value" type="xs:float" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="multiply">
+        <xs:attribute name="value" type="xs:float" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="divide">
+        <xs:attribute name="value" type="xs:positiveInteger" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="round">
+        <xs:attribute name="value" type="xs:nonNegativeInteger" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="floor">
+        <xs:attribute name="value" type="xs:nonNegativeInteger" use="required"/>
+    </xs:complexType>
+    
+    <xs:complexType name="indices">
+        <xs:attribute name="value" type="xs:integer"/>
+        <xs:attribute name="square" type="xs:integer"/>
+        <xs:attribute name="position" type="xs:string"/>
+    </xs:complexType>
+    
+    <xs:complexType name="repeat">
+        <xs:complexContent>
+            <xs:extension base="type">
+                <xs:choice maxOccurs="unbounded">
+	                <xs:element name="byte" type="byte"/>
+	                <xs:element name="unsignedByte" type="unsignedByte"/>
+	                <xs:element name="char" type="char"/>
+	                <xs:element name="chars" type="chars"/>
+	                <xs:element name="bytes" type="bytes"/>
+	                <xs:element name="short" type="short"/>
+	                <xs:element name="unsignedShort" type="unsignedShort"/>
+	                <xs:element name="shortLE" type="shortLE"/>
+	                <xs:element name="unsignedShortLE" type="unsignedShortLE"/>
+	                <xs:element name="int" type="int"/>
+	                <xs:element name="unsignedInt" type="unsignedInt"/>
+	                <xs:element name="intLE" type="intLE"/>
+	                <xs:element name="unsignedIntLE" type="unsignedIntLE"/>
+	                <xs:element name="float" type="float"/>
+	                <xs:element name="floatLE" type="floatLE"/>
+	                <xs:element name="long" type="long"/>
+	                <xs:element name="longLE" type="longLE"/>
+	                <xs:element name="double" type="double"/>
+	                <xs:element name="doubleLE" type="doubleLE"/>
+	                <xs:element name="customBytes" type="customBytes"/>
+	                <xs:element name="unsignedLong" type="unsignedLong"/>
+	                <xs:element name="unsignedLongLE" type="unsignedLongLE"/>
+	                <xs:element name="unusedBytes" type="unusedBytes"/>
+	                <xs:element name="hex" type="hex"/>
+	                <xs:element name="octal" type="octal"/>
+	                <xs:element name="variable" type="variable"/>
+	            </xs:choice>
+                <xs:attribute name="repeatSizeName" type="xs:string" use="required"/>
+                <xs:attribute name="prefix" type="xs:string" use="required"/>
+                <xs:attribute name="repeatBodySize" type="xs:integer"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:element name="message">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="code" type="xs:integer"/>
+                <xs:choice>
+                    <xs:element name="data">
+                        <xs:complexType>
+                            <xs:choice maxOccurs="unbounded">
+                                <xs:element name="byte" type="byte"/>
+                                <xs:element name="unsignedByte" type="unsignedByte"/>
+                                <xs:element name="char" type="char"/>
+                                <xs:element name="chars" type="chars"/>
+                                <xs:element name="bytes" type="bytes"/>
+                                <xs:element name="short" type="short"/>
+                                <xs:element name="unsignedShort" type="unsignedShort"/>
+                                <xs:element name="shortLE" type="shortLE"/>
+                                <xs:element name="unsignedShortLE" type="unsignedShortLE"/>
+                                <xs:element name="int" type="int"/>
+                                <xs:element name="unsignedInt" type="unsignedInt"/>
+                                <xs:element name="intLE" type="intLE"/>
+                                <xs:element name="unsignedIntLE" type="unsignedIntLE"/>
+                                <xs:element name="float" type="float"/>
+                                <xs:element name="floatLE" type="floatLE"/>
+                                <xs:element name="long" type="long"/>
+                                <xs:element name="longLE" type="longLE"/>
+                                <xs:element name="double" type="double"/>
+                                <xs:element name="doubleLE" type="doubleLE"/>
+                                <xs:element name="customBytes" type="customBytes"/>
+                                <xs:element name="unsignedLong" type="unsignedLong"/>
+                                <xs:element name="unsignedLongLE" type="unsignedLongLE"/>
+                                <xs:element name="unusedBytes" type="unusedBytes"/>
+                                <xs:element name="hex" type="hex"/>
+                                <xs:element name="octal" type="octal"/>
+                                <xs:element name="repeat" type="repeat"/>
+                                <xs:element name="variable" type="variable"/>
+                            </xs:choice>
+                        </xs:complexType>
+
+                    </xs:element>
+
+                    <xs:element name="nmea">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value=""/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+
+                </xs:choice>
+
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

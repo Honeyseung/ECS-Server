@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="https://uangel.com"
+           xmlns="https://uangel.com"
+           elementFormDefault="qualified">
+
+    <xs:complexType name="handler">
+        <xs:attribute name="refId"/>
+    </xs:complexType>
+
+    <xs:complexType name="filter">
+        <xs:attribute name="refId"/>
+    </xs:complexType>
+
+    <xs:complexType name="publish"/>
+
+    <xs:complexType name="server">
+        <xs:all>
+            <xs:element name="tcp" minOccurs="0">
+                <xs:complexType>
+                    <xs:attribute name="port" type="xs:integer"/>
+                    <xs:attribute name="sessionTimeout" type="xs:integer"/>
+                </xs:complexType>
+            </xs:element>
+
+            <xs:element name="tls" minOccurs="0">
+                <xs:complexType>
+                    <xs:attribute name="port" type="xs:integer"/>
+                    <xs:attribute name="sessionTimeout" type="xs:integer"/>
+                    <xs:attribute name="keystore" type="xs:string"/>
+                    <xs:attribute name="password" type="xs:string"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:all>
+        <xs:attribute name="deviceId" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="directories">
+        <xs:sequence maxOccurs="unbounded">
+            <xs:element name="directory">
+                <xs:complexType>
+                    <xs:sequence maxOccurs="unbounded">
+                        <xs:element name="file">
+                            <xs:complexType>
+                                <xs:attribute name="pattern" type="xs:string" use="required"/>
+                                <xs:attribute name="deviceId" type="xs:string"/>
+                                <xs:attribute name="sensorNodeId" type="xs:string"/>
+                                <xs:attribute name="readSleep" type="xs:int" default="10"/>
+                                <xs:attribute name="format" type="xs:string" use="required"/>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                    <xs:attribute name="path" type="xs:string" use="required"/>
+                    <xs:attribute name="interval" type="xs:string" use="required"/>
+                    <xs:attribute name="maxDepth" type="xs:int" default="1"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ftp">
+        <xs:all>
+            <xs:element name="sftpConfig" type="xs:string" minOccurs="0"/>
+            <xs:element name="ftpConfig" type="xs:string" minOccurs="0"/>
+        </xs:all>
+    </xs:complexType>
+
+    <xs:element name="dis">
+        <xs:complexType>
+            <xs:all>
+                <xs:element name="intfId" type="xs:string"/>
+                <xs:element name="handler" type="handler" minOccurs="0"/>
+                <xs:element name="tasks">
+                    <xs:complexType>
+                        <xs:choice maxOccurs="unbounded">
+                            <xs:choice>
+                                <xs:element name="server" type="server"/>
+                                <xs:element name="directories" type="directories"/>
+                                <xs:element name="ftp" type="ftp"/>
+                            </xs:choice>
+
+                            <xs:element name="parser">
+                                <xs:complexType>
+                                    <xs:all>
+                                        <xs:element name="filter" type="filter" minOccurs="0"/>
+                                    </xs:all>
+                                    <xs:attribute name="messages" type="xs:string" use="required"/>
+                                    <xs:attribute name="nmea" type="xs:string" use="required"/>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="filter" type="filter"/>
+                            <xs:element name="publish" type="publish"/>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+            </xs:all>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="https://uangel.com"
+           xmlns="https://uangel.com"
+           elementFormDefault="qualified">
+
+    <xs:complexType name="handler">
+        <xs:attribute name="refId"/>
+    </xs:complexType>
+
+    <xs:complexType name="filter">
+        <xs:attribute name="refId"/>
+    </xs:complexType>
+
+    <xs:complexType name="publish"/>
+
+    <xs:element name="modbus">
+        <xs:complexType>
+            <xs:all>
+                <xs:element name="intfId" type="xs:string"/>
+                <xs:element name="path" type="xs:string"/>
+                <xs:element name="handler" type="handler" minOccurs="0"/>
+                <xs:element name="tasks">
+                    <xs:complexType>
+                        <xs:choice maxOccurs="unbounded">
+                            <xs:element name="modbusMaster">
+                                <xs:complexType/>
+                            </xs:element>
+                            <xs:element name="modbusParser">
+                                <xs:complexType/>
+                            </xs:element>
+                            <xs:element name="filter" type="filter"/>
+                            <xs:element name="publish" type="publish"/>
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>
+            </xs:all>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

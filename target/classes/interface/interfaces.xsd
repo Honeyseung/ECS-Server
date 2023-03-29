@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="https://uangel.com"
+           xmlns="https://uangel.com"
+           elementFormDefault="qualified">
+
+    <xs:element name="interfacesConfig">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="handler" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:attribute name="id" type="xs:string"/>
+                        <xs:attribute name="class" type="xs:string"/>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="filter" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:attribute name="id" type="xs:string"/>
+                        <xs:attribute name="path" type="xs:string"/>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="interfaces">
+                    <xs:complexType>
+                        <xs:all>
+                            <xs:element name="modbus" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:attribute name="file" type="xs:string"/>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="nmea" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:attribute name="file" type="xs:string"/>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="dis" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:attribute name="file" type="xs:string"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:all>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
